@@ -15,7 +15,7 @@ module.exports = (file)=>{
     if(file){
         file = file.replace(/\\/g,'/');
 
-        var _name = file.replace('.js','');
+        var _name = file.replace('.js','').replace('.jsx','');
         _name = _name.replace(/\//g,'_');
         var extractLESS = new ExtractTextPlugin('css/'+ _name +'.css');
         var srcDir = srcPath+'/js/';
@@ -53,6 +53,10 @@ module.exports = (file)=>{
                 test: /\.js$/,
                 loader: "babel",
                 query:{presets: ['es2015']}
+            },
+            {
+                test: /\.jsx$/,
+                loader: 'babel-loader!jsx-loader?harmony'
             }
         ]
     };

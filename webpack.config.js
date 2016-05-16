@@ -45,6 +45,10 @@ module.exports = {
             test: /\.js$/,
             loader: "babel",
             query:{presets: ['es2015']}
+        },
+        {
+            test: /\.jsx$/,
+            loader: 'babel-loader!jsx-loader?harmony'
         }
     ]
   },
@@ -77,7 +81,7 @@ function getEntry() {
   var dirs = fs.readdirSync(jsPath);
   var matchs = [], files = {};
   dirs.forEach(function (item) {
-      matchs = item.match(/(.+)\.js$/);
+      matchs = item.match(/(.+)\.js(x?)$/);
       if (matchs && item.indexOf('_') !=0 ) {
           files[matchs[1]] = path.resolve(srcPath, 'js/app', item);
       }

@@ -26,7 +26,10 @@ const _htmlSrcPath = srcDir+'/html/';
 const _htmlFile = [_htmlSrcPath+'*/*.html',`!${_htmlSrcPath}**/_*/*.html`,`!${_htmlSrcPath}**/_*.html`];//html
 
 const _jsSrcPath = srcDir+'/js/';
-const _jsFile = [`${_jsSrcPath}/app/**/*.js`,`!${_htmlSrcPath}**/_*/*.js`,`!${_htmlSrcPath}**/_*.js`];//js
+const _jsFile = [`${_jsSrcPath}/**/*.js`,`!${_htmlSrcPath}**/_*/*.js`,`!${_htmlSrcPath}**/_*.js`];//js
+
+const _jsxSrcPath = srcDir+'/js/';
+const _jsxFile = [`${_jsSrcPath}/**/*.jsx`,`!${_htmlSrcPath}**/_*/*.jsx`,`!${_htmlSrcPath}**/_*.jsx`];//jsx
 
 /*监听html*/
 gulp.task('watchHtml',()=>{
@@ -72,15 +75,40 @@ gulp.task('buildJs',()=>{
 });
 
 
+/*监听jsx*/
+gulp.task('watchJsx',()=>{
+    watch(_jsxFile,(file)=>{
+        gulp.src(file.path)
+            .pipe(webpack(configDebugCtrl(file.relative)))
+            .pipe(gulp.dest(debugDir+'/'));
+    });
+});
+
+/*debug 模式下 编译jsx*/
+gulp.task('buildJsx',()=>{
+    gulp.src(_jsxFile)
+    .pipe(named(function(file){
+        var _file = file.relative.replace(/\\/g,'/');
+        _file = _file.replace(/\//g,'_');
+        file.named  = path.basename(_file, path.extname(_file));
+
+        this.queue(file);
+    }))
+    .pipe(webpack(configDebugCtrl()))
+    .pipe(gulp.dest(debugDir+'/')).on('end',function(){
+        console.log('js is finished!');
+    });
+});
+
 /*dev环境编译执行*/
 gulp.task('dev',()=>{
-    gulp.run(['buildHtml','buildJs','watchHtml','watchJs']);
+    gulp.run(['buildHtml','buildJs','buildJsx','watchHtml','watchJs','watchJsx']);
 });
 
 
 /*生产环境编译执行*/
 gulp.task('www', ()=>{
-    gulp.src(_jsFile)
+    gulp.src(_jsFile.concat(_jsxFile))
         .pipe(webpack(configPro))
         .pipe(gulp.dest(distDir+'/'))
         .on('end',function(){
