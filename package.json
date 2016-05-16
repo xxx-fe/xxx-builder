@@ -1,11 +1,12 @@
 {
   "name": "xxx-builder",
   "version": "0.0.1",
-  "author": {
-    "name": "subying",
-    "url": ""
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:xxx-fe/xxx-builder.git"
   },
-  "description": "",
+  "license": "MIT",
+  "description": "xxx-builder",
   "scripts": {
     "build": "gulp www",
     "dev": "gulp dev"
@@ -26,9 +27,11 @@
     "gulp-watch": "^4.3.5",
     "gulp-webpack": "^1.5.0",
     "img-loader": "^1.2.2",
+    "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "vinyl-named": "^1.1.0"
+    "vinyl-named": "^1.1.0",
+    "webpack": "^1.13.0"
   }
 }

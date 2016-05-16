@@ -1,0 +1,8 @@
+{
+    "path":{
+        "src": "src",
+        "debug": "debug",
+        "dist": "dist"
+    },
+    "htmlViews": "../html"
+}
