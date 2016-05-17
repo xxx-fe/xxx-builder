@@ -16,7 +16,6 @@ var assetsPluginInstance = new AssetsPlugin({filename:'map.json',path: path.join
 
 module.exports = {
   devtool: "source-map",    //生成sourcemap,便于开发调试
-  entry: getEntry(),         //获取项目入口js文件
   output: {
       //path: path.join(__dirname, "dist/js/"), //文件输出目录
       //publicPath: "dist/js/",     //用于配置文件发布路径，如CDN或本地服务器
@@ -69,23 +68,5 @@ module.exports = {
           name: 'common',
           filename: 'js/'+ nameStr +'.js'
       })
-      // new webpack.optimize.CommonsChunkPlugin({
-      //     name: ['zepto','common']
-      // })
   ]
 };
-
-
-function getEntry() {
-  var jsPath = path.resolve(srcPath, 'js/app');
-  var dirs = fs.readdirSync(jsPath);
-  var matchs = [], files = {};
-  dirs.forEach(function (item) {
-      matchs = item.match(/(.+)\.js(x?)$/);
-      if (matchs && item.indexOf('_') !=0 ) {
-          files[matchs[1]] = path.resolve(srcPath, 'js/app', item);
-      }
-  });
-  //files['core'] = ['zepto','avalon'];//公用模块
-  return files;
-}
