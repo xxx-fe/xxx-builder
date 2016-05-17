@@ -3,26 +3,10 @@
     @description test
 */
 
-require('../../less/test.less');
+require('../../less/index.less');
 
 
-ReactDOM.render(
-    <h1>Hello, world!</h1>,
-    document.getElementById('example')
-);
 
-
-//组件
-var CommentBox = React.createClass({
-    render: function() {
-      return (
-        <div className="commentBox">
-          Hello, world! I am a CommentBox.
-          {this.props.children}
-        </div>
-      );
-    }
-});
 ReactDOM.render(
     <CommentBox />,
     document.getElementById('content')

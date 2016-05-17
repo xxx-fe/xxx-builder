@@ -5,4 +5,4 @@
 
 require('../../less/index.less');
 
-var testIndex = 'index';
+var testIndex = 'index1';

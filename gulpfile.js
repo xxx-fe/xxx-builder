@@ -40,7 +40,8 @@ const _jsFile = [
 
 /*监听html*/
 gulp.task('watchHtml',()=>{
-    watch(_htmlFile)
+    //{events:['add', 'change']} 监听 新增、修改
+    watch(_htmlFile,{events:['add', 'change']})
     .pipe(fileinclude('@@'))
     .pipe(gulp.dest(htmlViews));
 });
@@ -50,18 +51,29 @@ gulp.task('buildHtml',()=>{
     gulp.src(_htmlFile)
     .pipe(fileinclude('@@'))
     .pipe(gulp.dest(htmlViews))
-    .on('end',function(){
+    .on('end',()=>{
         console.log('html is finished!');
     });
 });
 
+var jsWatchList = new Set();
 
 /*监听js*/
 gulp.task('watchJs',()=>{
-    watch(_jsFile,(file)=>{
-        gulp.src(file.path)
-            .pipe(webpack(configDebugCtrl(file.relative)))
-            .pipe(gulp.dest(debugDir+'/'));
+    //{events:['add', 'change']} 监听 新增、修改
+    watch(_jsFile,{events:['add', 'change']},(file)=>{
+        if(jsWatchList.has(file.path)){
+            return false;
+        }else{
+            jsWatchList.add(file.path);
+            gulp.src(file.path)
+                .pipe(webpack(configDebugCtrl(file.relative)))
+                .pipe(gulp.dest(debugDir+'/'))
+                .on('end',()=>{
+                    console.log(file.relative+' is complite!');
+                });
+        }
+
     });
 });
 
@@ -69,6 +81,8 @@ gulp.task('watchJs',()=>{
 gulp.task('buildJs',()=>{
     gulp.src(_jsFile)
     .pipe(named(function(file){
+        jsWatchList.add(file.path);
+
         var _file = file.relative.replace(/\\/g,'/');
         _file = _file.replace(/\//g,'_');
         file.named  = path.basename(_file, path.extname(_file));
@@ -76,20 +90,19 @@ gulp.task('buildJs',()=>{
         this.queue(file);
     }))
     .pipe(webpack(configDebugCtrl()))
-    .pipe(gulp.dest(debugDir+'/')).on('end',function(){
+    .pipe(gulp.dest(debugDir+'/'))
+    .on('end',()=>{
         console.log('js is finished!');
     });
 });
 
 
 /*dev环境编译执行*/
-gulp.task('dev',()=>{
-    gulp.run(['buildHtml','buildJs','watchHtml','watchJs']);
-});
+gulp.task('dev',['buildHtml','buildJs','watchHtml']);
 
 
 /*生产环境编译执行*/
-gulp.task('build', ()=>{
+gulp.task('build', ['buildHtml'],()=>{
     gulp.src(_jsFile)
         .pipe(named(function(file){
             var _file = file.relative.replace(/\\/g,'/');
@@ -103,7 +116,5 @@ gulp.task('build', ()=>{
         .on('end',function(){
             console.log('js is finished!');
         });
-
-    gulp.run('buildHtml');
 
 });

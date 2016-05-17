@@ -1,9 +1,14 @@
+/*
+    *@description 构建模式配置
+*/
+
+'use strict';
+
 const path = require('path');
 const fs   = require('fs');
 
 const config = require('./config.json');
-const distPath = config.path.dist + '/';
-const srcPath = config.path.src + '/';
+//const distPath = config.path.dist + '/';
 
 var nameStr = '[name].[hash:6]';
 var webpack = require('webpack');
@@ -17,10 +22,8 @@ var assetsPluginInstance = new AssetsPlugin({filename:'map.json',path: path.join
 module.exports = {
   devtool: "source-map",    //生成sourcemap,便于开发调试
   output: {
-      //path: path.join(__dirname, "dist/js/"), //文件输出目录
-      //publicPath: "dist/js/",     //用于配置文件发布路径，如CDN或本地服务器
-      path: path.join(__dirname, distPath),
-      publicPath: distPath,
+      //path: path.join(__dirname, distPath),//文件输出目录
+      //publicPath: distPath,//用于配置文件发布路径，如CDN或本地服务器
       filename: "js/"+ nameStr +".js"      //根据入口文件输出的对应多个文件名
   },
   module: {
