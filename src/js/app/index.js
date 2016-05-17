@@ -6,3 +6,9 @@
 require('../../less/index.less');
 
 var testIndex = 'index1';
+var a = '45yt';
+
+
+function dataTpl(){
+    var tpl = 'indexTpl';
+}

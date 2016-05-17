@@ -8,6 +8,7 @@ const watch = require('gulp-watch');
 const webpack = require('gulp-webpack');
 const fileinclude = require('gulp-file-include');
 const named = require('vinyl-named');
+const through2 = require('through2');
 
 /*设置相关*/
 const config = require('./config.json');
@@ -77,7 +78,8 @@ gulp.task('watchJs',()=>{
     });
 });
 
-/*debug 模式下 编译js*/
+/*debug 模式下 编译js*/through2
+/*
 gulp.task('buildJs',()=>{
     gulp.src(_jsFile)
     .pipe(named(function(file){
@@ -86,14 +88,36 @@ gulp.task('buildJs',()=>{
         var _file = file.relative.replace(/\\/g,'/');
         _file = _file.replace(/\//g,'_');
         file.named  = path.basename(_file, path.extname(_file));
-
         this.queue(file);
+
+        // gulp.src(file.path)
+        //     .pipe(webpack(configDebugCtrl(file.relative)))
+        //     .pipe(gulp.dest(debugDir+'/'));
     }))
     .pipe(webpack(configDebugCtrl()))
     .pipe(gulp.dest(debugDir+'/'))
     .on('end',()=>{
         console.log('js is finished!');
     });
+});
+*/
+gulp.task('buildJs',()=>{
+    gulp.src(_jsFile)
+    .pipe(watch(_jsFile,{events:['add', 'change']},(file)=>{
+        if(jsWatchList.has(file.path)){
+            return false;
+        }else{
+            jsWatchList.add(file.path);
+            gulp.src(file.path)
+                .pipe(webpack(configDebugCtrl(file.relative)))
+                .pipe(gulp.dest(debugDir+'/'))
+                .on('end',()=>{
+                    console.log(file.relative+' is complite!');
+                });
+        }
+
+    }))
+    ;
 });
 
 

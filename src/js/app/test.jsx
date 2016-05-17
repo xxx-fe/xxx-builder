@@ -5,8 +5,6 @@
 
 require('../../less/index.less');
 
-
-
 ReactDOM.render(
     <CommentBox />,
     document.getElementById('content')
@@ -19,7 +17,7 @@ var CommentBox1 = React.createClass({
       return (
         <div className="commentBox">
           {this.props.name}
-          <CommentBox><h1>brs</h1></CommentBox>
+          <CommentBox><h1>brsyqd</h1></CommentBox>
         </div>
       );
     }
