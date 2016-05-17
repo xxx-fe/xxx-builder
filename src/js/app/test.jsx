@@ -3,7 +3,7 @@
     @description test
 */
 
-require('../../less/index.less');
+require('../../less/test.less');
 
 ReactDOM.render(
     <CommentBox />,

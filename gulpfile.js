@@ -60,6 +60,7 @@ gulp.task('buildHtml',()=>{
 var jsWatchList = new Set();
 
 /*监听js*/
+/*
 gulp.task('watchJs',()=>{
     //{events:['add', 'change']} 监听 新增、修改
     watch(_jsFile,{events:['add', 'change']},(file)=>{
@@ -77,8 +78,9 @@ gulp.task('watchJs',()=>{
 
     });
 });
+*/
 
-/*debug 模式下 编译js*/through2
+/*debug 模式下 编译js*/
 /*
 gulp.task('buildJs',()=>{
     gulp.src(_jsFile)
@@ -101,6 +103,7 @@ gulp.task('buildJs',()=>{
     });
 });
 */
+/*开发模式下构建和监听js*/
 gulp.task('buildJs',()=>{
     gulp.src(_jsFile)
     .pipe(watch(_jsFile,{events:['add', 'change']},(file)=>{
