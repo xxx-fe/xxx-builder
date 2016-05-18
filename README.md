@@ -24,10 +24,7 @@ npm run build
         "dist": "dist" //生产代码目录
     },
     "appJsPath":"app", //业务js目录  相对于源码目录
-    "coreJs":{ //核心文件配置
-        "react": "core/react.js",
-        "react-dom": "core/react-dom.js"
-    },
-    "htmlViews": "../html" //模板输出目录
+    "htmlViews": "../html", //模板输出目录
+    "mapPath": "../html/map" //map 文件输出
 }
 ```
