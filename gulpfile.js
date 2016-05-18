@@ -17,6 +17,7 @@ const debugDir = config.path.debug;
 const distDir = config.path.dist;
 const htmlViews = config.htmlViews;
 const appJsPath = config.appJsPath;
+const coreJs = config.coreJs;
 
 /*webpack 配置相关*/
 var configPro = require('./webpack.config');
@@ -40,7 +41,7 @@ const _jsFile = [
 
 
 /*监听html*/
-gulp.task('watchHtml',()=>{
+gulp.task('html:dev',()=>{
     //{events:['add', 'change']} 监听 新增、修改
     watch(_htmlFile,{events:['add', 'change']})
     .pipe(fileinclude('@@'))
@@ -48,7 +49,7 @@ gulp.task('watchHtml',()=>{
 });
 
 /*编译html*/
-gulp.task('buildHtml',()=>{
+gulp.task('html:build',()=>{
     gulp.src(_htmlFile)
     .pipe(fileinclude('@@'))
     .pipe(gulp.dest(htmlViews))
@@ -56,6 +57,7 @@ gulp.task('buildHtml',()=>{
         console.log('html is finished!');
     });
 });
+
 
 var jsWatchList = new Set();
 
@@ -82,29 +84,30 @@ gulp.task('watchJs',()=>{
 
 /*debug 模式下 编译js*/
 /*
-gulp.task('buildJs',()=>{
-    gulp.src(_jsFile)
-    .pipe(named(function(file){
-        jsWatchList.add(file.path);
+    gulp.task('buildJs',()=>{
+        gulp.src(_jsFile)
+        .pipe(named(function(file){
+            jsWatchList.add(file.path);
 
-        var _file = file.relative.replace(/\\/g,'/');
-        _file = _file.replace(/\//g,'_');
-        file.named  = path.basename(_file, path.extname(_file));
-        this.queue(file);
+            var _file = file.relative.replace(/\\/g,'/');
+            _file = _file.replace(/\//g,'_');
+            file.named  = path.basename(_file, path.extname(_file));
+            this.queue(file);
 
-        // gulp.src(file.path)
-        //     .pipe(webpack(configDebugCtrl(file.relative)))
-        //     .pipe(gulp.dest(debugDir+'/'));
-    }))
-    .pipe(webpack(configDebugCtrl()))
-    .pipe(gulp.dest(debugDir+'/'))
-    .on('end',()=>{
-        console.log('js is finished!');
+            // gulp.src(file.path)
+            //     .pipe(webpack(configDebugCtrl(file.relative)))
+            //     .pipe(gulp.dest(debugDir+'/'));
+        }))
+        .pipe(webpack(configDebugCtrl()))
+        .pipe(gulp.dest(debugDir+'/'))
+        .on('end',()=>{
+            console.log('js is finished!');
+        });
     });
-});
 */
+
 /*开发模式下构建和监听js*/
-gulp.task('buildJs',()=>{
+gulp.task('js:dev',()=>{
     gulp.src(_jsFile)
     .pipe(watch(_jsFile,{events:['add', 'change']},(file)=>{
         if(jsWatchList.has(file.path)){
@@ -125,11 +128,11 @@ gulp.task('buildJs',()=>{
 
 
 /*dev环境编译执行*/
-gulp.task('dev',['buildHtml','buildJs','watchHtml']);
+gulp.task('dev',['html:build','html:dev','js:dev']);
 
 
 /*生产环境编译执行*/
-gulp.task('build', ['buildHtml'],()=>{
+gulp.task('build', ['html:build'],()=>{
     gulp.src(_jsFile)
         .pipe(named(function(file){
             var _file = file.relative.replace(/\\/g,'/');
@@ -143,5 +146,4 @@ gulp.task('build', ['buildHtml'],()=>{
         .on('end',function(){
             console.log('js is finished!');
         });
-
 });

@@ -18,7 +18,7 @@ module.exports = (file)=>{
     if(file){
         file = file.replace(/\\/g,'/');
 
-        var _name = file.replace('.jsx','').replace('.js','');
+        var _name = file.replace(/\.js(x?)$/,'');
         _name = _name.replace(/\//g,'_');
         var extractLESS = new ExtractTextPlugin('css/'+ _name +'.css');
         var srcDir = `./${srcPath}/js/${config.appJsPath}/`;
@@ -52,6 +52,10 @@ module.exports = (file)=>{
                 loader: "url?limit=8192&name=img/[name].[ext]"+"!img?minimize&progressive=true&optimizationLevel=5"
             },
             {
+                test: /\.(eot|svg|ttf|woff)$/,
+                loader: "file?name=fonts/[name].[ext]"
+            },
+            {
                 test: /\.js$/,
                 loader: "babel",
                 query:{presets: ['es2015']}
@@ -59,7 +63,7 @@ module.exports = (file)=>{
             {
                 test: /\.jsx$/,
                 loader: 'babel-loader!jsx-loader?harmony'
-            }
+            },
         ]
     };
 

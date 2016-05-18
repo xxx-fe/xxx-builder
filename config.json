@@ -5,9 +5,6 @@
         "dist": "dist"
     },
     "appJsPath":"app",
-    "coreJs":{
-        "react": "core/react.js",
-        "react-dom": "core/react-dom.js"
-    },
-    "htmlViews": "../html"
+    "htmlViews": "../html",
+    "mapPath": "../html/map"
 }

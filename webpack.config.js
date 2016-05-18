@@ -8,7 +8,7 @@ const path = require('path');
 const fs   = require('fs');
 
 const config = require('./config.json');
-//const distPath = config.path.dist + '/';
+const distPath = config.path.dist + '/';
 
 var nameStr = '[name].[hash:6]';
 var webpack = require('webpack');
@@ -16,7 +16,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractLESS = new ExtractTextPlugin('css/'+ nameStr +'.css');
 
 var AssetsPlugin = require('assets-webpack-plugin')
-var assetsPluginInstance = new AssetsPlugin({filename:'map.json',path: path.join(__dirname, 'dist', 'map')});
+var assetsPluginInstance = new AssetsPlugin({filename:'map.json',path: path.resolve(__dirname, config.mapPath || distPath+"map")});
 
 
 module.exports = {
@@ -42,6 +42,10 @@ module.exports = {
         {
             test: /\.(jpg|png|gif)$/,
             loader: "url?limit=8192&name=img/"+ nameStr +".[ext]"+"!img?minimize&progressive=true&optimizationLevel=5"
+        },
+        {
+            test: /\.(eot|svg|ttf|woff)$/,
+            loader: "file?name=fonts/"+ nameStr +".[ext]"
         },
         {
             test: /\.js$/,
