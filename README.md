@@ -3,6 +3,7 @@
 ## 安装
 ```shell
 npm i
+npm i gulp -g
 ```
 
 ## 开发模式
