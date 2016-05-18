@@ -60,7 +60,17 @@ module.exports = {
   },
   resolve: {
     //配置别名，在项目中可缩减引用路径
-    alias: {}
+    alias: {},
+    extensions:["",".js"],
+    root:[
+        /*
+            配置查找模块路径
+            比如 require('react')  这个时候没有设置相对路径，就会跑到设置的路径里面去查询
+            这里主要是针对核心文件的处理
+            当然如果是这样的文件不多  也可以通过设置alias来实现
+        */
+        path.resolve('./src/js/vendor')
+    ]
   },
   plugins: [
       extractLESS,
