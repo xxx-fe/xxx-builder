@@ -4,6 +4,7 @@
 */
 
 require('../../less/test.less');
+var tpl = require('../../tpl/test.html');
 
 ReactDOM.render(
     <CommentBox />,

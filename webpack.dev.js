@@ -63,6 +63,10 @@ module.exports = (file)=>{
                 test: /\.jsx$/,
                 loader: 'babel-loader!jsx-loader?harmony'
             },
+            {
+                test: /\.html$/,
+                loader: 'html-loader'
+            }
         ]
     };
 

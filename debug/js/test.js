@@ -40,8 +40,9 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -50,6 +51,7 @@
 	*/
 
 	__webpack_require__(2);
+	var tpl = __webpack_require__(10);
 
 	ReactDOM.render(React.createElement(CommentBox, null), document.getElementById('content'));
 
@@ -99,11 +101,19 @@
 	ReactDOM.render(React.createElement(CommentForm, null), document.getElementById('form'));
 
 /***/ },
-/* 1 */,
-/* 2 */
+
+/***/ 2:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
+/***/ },
+
+/***/ 10:
+/***/ function(module, exports) {
+
+	module.exports = "<a> test </a>\n";
+
 /***/ }
-/******/ ]);
+
+/******/ });
