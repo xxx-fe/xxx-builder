@@ -4,11 +4,11 @@
 const path = require('path');
 const gulp = require('gulp');
 const watch = require('gulp-watch');
-
 const webpack = require('gulp-webpack');
 const fileinclude = require('gulp-file-include');
 const named = require('vinyl-named');
-const through2 = require('through2');
+const plumber = require('gulp-plumber');
+const gutil = require('gulp-util');
 
 /*设置相关*/
 const config = require('./config.json');
@@ -22,6 +22,12 @@ const coreJs = config.coreJs;
 /*webpack 配置相关*/
 var configPro = require('./webpack.config');
 var configDebugCtrl = require('./webpack.dev');
+
+function errrHandler( e ){
+    // 控制台发声,错误时beep一下
+    gutil.beep();
+    gutil.log( e );
+}
 
 
 /*源码相关-针对gulp 监听或者编译  凡是以_开头的文件或者以_开头的文件夹下的文件都不执行编译*/
@@ -51,6 +57,7 @@ gulp.task('html:dev',()=>{
 /*编译html*/
 gulp.task('html:build',()=>{
     gulp.src(_htmlFile)
+    .pipe(plumber({errorHandler: errrHandler}))
     .pipe(fileinclude('@@'))
     .pipe(gulp.dest(htmlViews))
     .on('end',()=>{
@@ -109,6 +116,7 @@ gulp.task('watchJs',()=>{
 /*开发模式下构建和监听js*/
 gulp.task('js:dev',()=>{
     gulp.src(_jsFile)
+    .pipe(plumber({errorHandler: errrHandler}))
     .pipe(watch(_jsFile,{events:['add', 'change']},(file)=>{
         if(jsWatchList.has(file.path)){
             return false;
@@ -134,6 +142,7 @@ gulp.task('dev',['html:build','html:dev','js:dev']);
 /*生产环境编译执行*/
 gulp.task('build', ['html:build'],()=>{
     gulp.src(_jsFile)
+        .pipe(plumber({errorHandler: errrHandler}))
         .pipe(named(function(file){
             var _file = file.relative.replace(/\\/g,'/');
             _file = _file.replace(/\//g,'_');
