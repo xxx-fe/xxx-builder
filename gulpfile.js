@@ -123,6 +123,7 @@ gulp.task('js:dev',()=>{
         }else{
             jsWatchList.add(file.path);
             gulp.src(file.path)
+                .pipe(plumber({errorHandler: errrHandler}))
                 .pipe(webpack(configDebugCtrl(file.relative)))
                 .pipe(gulp.dest(debugDir+'/'))
                 .on('end',()=>{
