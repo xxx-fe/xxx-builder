@@ -35,8 +35,8 @@ const _htmlFile = [
 const _jsSrcPath = srcDir+'/js/';
 const _jsFile = [
     `${_jsSrcPath}/${appJsPath}/**/*.js?(x)`,
-    `!${_htmlSrcPath}**/_*/*.js?(x)`,
-    `!${_htmlSrcPath}**/_*.js?(x)`
+    `!${_jsSrcPath}**/_*/*.js?(x)`,
+    `!${_jsSrcPath}**/_*.js?(x)`
 ];//js jsx
 
 
