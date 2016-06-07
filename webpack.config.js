@@ -48,13 +48,11 @@ module.exports = {
             loader: "file?name=fonts/"+ nameStr +".[ext]"
         },
         {
-            test: /\.js$/,
+            test: /\.jsx?$/,
             loader: "babel",
-            query:{presets: ['es2015']}
-        },
-        {
-            test: /\.jsx$/,
-            loader: 'babel-loader!jsx-loader?harmony'
+            query: {
+              presets: ['react', 'es2015']
+            }
         },
         {
             test: /\.html$/,

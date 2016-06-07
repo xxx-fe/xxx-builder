@@ -58,7 +58,7 @@
 	//嵌套
 	var CommentBox1 = React.createClass({ displayName: "CommentBox1",
 	  render: function () {
-	    return React.createElement("div", { className: "commentBox" }, this.props.name, React.createElement(CommentBox, null, React.createElement("h1", null, "brsyqd")));
+	    return React.createElement("div", { className: "commentBox" }, this.props.name, React.createElement(CommentBox, null, React.createElement("h1", null, "123test")));
 	  }
 	});
 	ReactDOM.render(React.createElement(CommentBox1, { name: "yy" }), document.getElementById('content1'));
