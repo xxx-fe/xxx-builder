@@ -45,6 +45,8 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/*
 	    @filename: test.js
 	    @description test
@@ -56,26 +58,43 @@
 	ReactDOM.render(React.createElement(CommentBox, null), document.getElementById('content'));
 
 	//嵌套
-	var CommentBox1 = React.createClass({ displayName: "CommentBox1",
-	  render: function () {
-	    return React.createElement("div", { className: "commentBox" }, this.props.name, React.createElement(CommentBox, null, React.createElement("h1", null, "123test")));
+	var CommentBox1 = React.createClass({
+	  displayName: 'CommentBox1',
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'commentBox' },
+	      this.props.name,
+	      React.createElement(
+	        CommentBox,
+	        null,
+	        React.createElement(
+	          'h1',
+	          null,
+	          '123test'
+	        )
+	      )
+	    );
 	  }
 	});
-	ReactDOM.render(React.createElement(CommentBox1, { name: "yy" }), document.getElementById('content1'));
+	ReactDOM.render(React.createElement(CommentBox1, { name: 'yy' }), document.getElementById('content1'));
 
 	//方法
-	var CommentForm = React.createClass({ displayName: "CommentForm",
+	var CommentForm = React.createClass({
+	  displayName: 'CommentForm',
+
 	  //设置默认数据  state数据
-	  getInitialState: function () {
+	  getInitialState: function getInitialState() {
 	    return { author: '', text: '' };
 	  },
-	  handleAuthorChange: function (e) {
+	  handleAuthorChange: function handleAuthorChange(e) {
 	    this.setState({ author: e.target.value });
 	  },
-	  handleTextChange: function (e) {
+	  handleTextChange: function handleTextChange(e) {
 	    this.setState({ text: e.target.value });
 	  },
-	  handleSubmit: function (e) {
+	  handleSubmit: function handleSubmit(e) {
 	    e.preventDefault();
 	    var author = this.state.author.trim();
 	    var text = this.state.text.trim();
@@ -85,16 +104,25 @@
 	    // TODO: send request to the server
 	    this.setState({ author: '', text: '' });
 	  },
-	  render: function () {
-	    return React.createElement("form", { className: "commentForm", onSubmit: this.handleSubmit }, React.createElement("input", {
-	      type: "text",
-	      placeholder: "Your name",
-	      value: this.state.author,
-	      onChange: this.handleAuthorChange }), React.createElement("input", {
-	      type: "text",
-	      placeholder: "Say something...",
-	      value: this.state.text,
-	      onChange: this.handleTextChange }), this.state.text, React.createElement("input", { type: "submit", value: "Post" }));
+	  render: function render() {
+	    return React.createElement(
+	      'form',
+	      { className: 'commentForm', onSubmit: this.handleSubmit },
+	      React.createElement('input', {
+	        type: 'text',
+	        placeholder: 'Your name',
+	        value: this.state.author,
+	        onChange: this.handleAuthorChange
+	      }),
+	      React.createElement('input', {
+	        type: 'text',
+	        placeholder: 'Say something...',
+	        value: this.state.text,
+	        onChange: this.handleTextChange
+	      }),
+	      this.state.text,
+	      React.createElement('input', { type: 'submit', value: 'Post' })
+	    );
 	  }
 	});
 
