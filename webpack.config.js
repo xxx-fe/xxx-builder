@@ -15,8 +15,10 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractLESS = new ExtractTextPlugin('css/'+ nameStr +'.css');
 
-var AssetsPlugin = require('assets-webpack-plugin')
-var assetsPluginInstance = new AssetsPlugin({filename:'map.json',path: path.resolve(__dirname, config.mapPath || distPath+"map")});
+//var AssetsPlugin = require('assets-webpack-plugin')
+var MapPlugin = require('./map-webpack-plugin');
+var assetsPluginInstance = new MapPlugin({filename:'map.json',path: path.resolve(__dirname, config.mapPath || distPath+"map")});
+//var assetsPluginInstance = new AssetsPlugin({filename:'map.json',path: path.resolve(__dirname, config.mapPath || distPath+"map")});
 
 
 module.exports = {
