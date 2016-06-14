@@ -26,7 +26,7 @@ module.exports = {
   output: {
       //path: path.join(__dirname, distPath),//文件输出目录
       //publicPath: distPath,//用于配置文件发布路径，如CDN或本地服务器
-      filename: "js/"+ nameStr +".js"      //根据入口文件输出的对应多个文件名
+      filename: "js/[name].[chunkhash:6].js"      //根据入口文件输出的对应多个文件名
   },
   module: {
     //各种加载器，即让各种文件格式可用require引用
