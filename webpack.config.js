@@ -16,8 +16,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractLESS = new ExtractTextPlugin('css/'+ nameStr +'.css');
 
 //var AssetsPlugin = require('assets-webpack-plugin')
-var MapPlugin = require('./map-webpack-plugin');
-var assetsPluginInstance = new MapPlugin({filename:'map.json',path: path.resolve(__dirname, config.mapPath || distPath+"map")});
+var MapPlugin = require('map-webpack-plugin');
+var mapPluginInstance = new MapPlugin({filename:'map.json',path: path.resolve(__dirname, config.mapPath || distPath+"map")});
 //var assetsPluginInstance = new AssetsPlugin({filename:'map.json',path: path.resolve(__dirname, config.mapPath || distPath+"map")});
 
 
@@ -26,7 +26,7 @@ module.exports = {
   output: {
       //path: path.join(__dirname, distPath),//文件输出目录
       //publicPath: distPath,//用于配置文件发布路径，如CDN或本地服务器
-      filename: "js/"+ nameStr +".js"      //根据入口文件输出的对应多个文件名
+      filename: "js/[name].[chunkhash:6].js"      //根据入口文件输出的对应多个文件名
   },
   module: {
     //各种加载器，即让各种文件格式可用require引用
@@ -78,7 +78,7 @@ module.exports = {
   },
   plugins: [
       extractLESS,
-      assetsPluginInstance,
+      mapPluginInstance,
       //设置这个可以忽略压缩时产生的警告
       new webpack.optimize.UglifyJsPlugin({
           compress: {
