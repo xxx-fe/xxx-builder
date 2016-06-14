@@ -16,8 +16,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractLESS = new ExtractTextPlugin('css/'+ nameStr +'.css');
 
 //var AssetsPlugin = require('assets-webpack-plugin')
-var MapPlugin = require('./map-webpack-plugin');
-var assetsPluginInstance = new MapPlugin({filename:'map.json',path: path.resolve(__dirname, config.mapPath || distPath+"map")});
+var MapPlugin = require('map-webpack-plugin');
+var mapPluginInstance = new MapPlugin({filename:'map.json',path: path.resolve(__dirname, config.mapPath || distPath+"map")});
 //var assetsPluginInstance = new AssetsPlugin({filename:'map.json',path: path.resolve(__dirname, config.mapPath || distPath+"map")});
 
 
@@ -78,7 +78,7 @@ module.exports = {
   },
   plugins: [
       extractLESS,
-      assetsPluginInstance,
+      mapPluginInstance,
       //设置这个可以忽略压缩时产生的警告
       new webpack.optimize.UglifyJsPlugin({
           compress: {
