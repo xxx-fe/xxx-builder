@@ -3,8 +3,8 @@
 @description: test
 @author: yy
 */
-@import "_common/reset";
-
+@import "./_common/reset";
+@import "./var";
 
 .loading{
     background: url(../img/loading.gif) no-repeat center center;
@@ -15,5 +15,14 @@
 }
 
 .af{
+    font-size: ceil(13.3);
     color: #f00;
+}
+
+.mixin() {
+    color: #fff;
+}
+
+.caller {
+  .mixin();
 }

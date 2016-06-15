@@ -209,3 +209,6 @@ input::-webkit-inner-spin-button {
 .err-404 {
   background: url(img/404.png) no-repeat center center;
 }
+.test {
+  background: red;
+}
