@@ -208,5 +208,6 @@ input::-webkit-inner-spin-button {
   background: url(img/404.png) no-repeat center center;
 }
 .af {
+  font-size: 14;
   color: #f00;
 }

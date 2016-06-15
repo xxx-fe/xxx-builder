@@ -39,7 +39,7 @@
     "img-loader": "^1.2.2",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "map-webpack-plugin": "0.0.2",
+    "map-webpack-plugin": "^0.0.5",
     "style-loader": "^0.13.1",
     "through2": "^2.0.1",
     "url-loader": "^0.5.7",
