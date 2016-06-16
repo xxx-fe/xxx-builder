@@ -7,6 +7,7 @@
 const path = require('path');
 const fs   = require('fs');
 const config = require('./config.json');
+const autoprefixer = require('autoprefixer');
 const srcPath = config.path.src;
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -38,12 +39,22 @@ module.exports = (file)=>{
     opt.module = {
         //各种加载器，即让各种文件格式可用require引用
         loaders: [
+            // {
+            //     test: /\.less$/,
+            //     loader: extractLESS.extract(
+            //         'css?sourceMap!' +
+            //         'less?sourceMap!'+
+            //         'autoprefixer?browsers=last 5 versions'
+            //     )
+            // },
             {
                 test: /\.less$/,
                 loader: extractLESS.extract(
                     'css?sourceMap!' +
-                    'less?sourceMap!'+
-                    'autoprefixer?browsers=last 2 versions'
+                    'postcss-loader!'+
+                    'less?sourceMap'
+                    //'less?sourceMap!'+
+                    //'autoprefixer?browsers=last 5 versions'
                 )
             },
             {
@@ -66,6 +77,13 @@ module.exports = (file)=>{
                 loader: 'html-loader'
             }
         ]
+    };
+
+    opt.postcss = function () {
+        return [
+            require('postcss-import')(),
+            autoprefixer({ browsers: ['last 5 versions'] })
+        ];
     };
 
     opt.plugins = [extractLESS];

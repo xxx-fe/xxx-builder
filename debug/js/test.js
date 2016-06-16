@@ -51,8 +51,8 @@
 	    @description test
 	*/
 
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../less/test.less\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var tpl = __webpack_require__(2);
+	__webpack_require__(2);
+	var tpl = __webpack_require__(6);
 
 	ReactDOM.render(React.createElement(CommentBox, null), document.getElementById('content'));
 
@@ -130,6 +130,15 @@
 /***/ },
 /* 1 */,
 /* 2 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */
 /***/ function(module, exports) {
 
 	module.exports = "<a> test </a>\n";
