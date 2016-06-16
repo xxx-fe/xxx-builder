@@ -27,7 +27,8 @@ html {
   text-size-adjust: 100%;
   -webkit-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  -moz-user-select: none;
+       user-select: none;
 }
 html,
 body {

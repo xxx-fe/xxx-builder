@@ -40,8 +40,9 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51,8 +52,8 @@
 	    @description test
 	*/
 
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../less/test.less\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var tpl = __webpack_require__(2);
+	__webpack_require__(3);
+	var tpl = __webpack_require__(11);
 
 	ReactDOM.render(React.createElement(CommentBox, null), document.getElementById('content'));
 
@@ -128,11 +129,19 @@
 	ReactDOM.render(React.createElement(CommentForm, null), document.getElementById('form'));
 
 /***/ },
-/* 1 */,
-/* 2 */
+
+/***/ 3:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 11:
 /***/ function(module, exports) {
 
 	module.exports = "<a> test </a>\n";
 
 /***/ }
-/******/ ]);
+
+/******/ });

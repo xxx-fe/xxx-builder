@@ -38,12 +38,20 @@ module.exports = (file)=>{
     opt.module = {
         //各种加载器，即让各种文件格式可用require引用
         loaders: [
+            // {
+            //     test: /\.less$/,
+            //     loader: extractLESS.extract(
+            //         'css?sourceMap!' +
+            //         'less?sourceMap!'+
+            //         'autoprefixer?browsers=last 5 versions'
+            //     )
+            // },
             {
                 test: /\.less$/,
                 loader: extractLESS.extract(
                     'css?sourceMap!' +
-                    'less?sourceMap!'+
-                    'autoprefixer?browsers=last 2 versions'
+                    'autoprefixer?browsers=last 5 versions!'+
+                    'less?sourceMap'
                 )
             },
             {
@@ -85,6 +93,9 @@ module.exports = (file)=>{
         //     'react':'./react.js'
         // }
     };
+    opt.postcss=function () {
+       return [require('autoprefixer')];
+     }
 
     return opt;
 };

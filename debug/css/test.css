@@ -27,7 +27,8 @@ html {
   text-size-adjust: 100%;
   -webkit-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  -moz-user-select: none;
+       user-select: none;
 }
 html,
 body {
@@ -210,4 +211,11 @@ input::-webkit-inner-spin-button {
 .af {
   font-size: 14;
   color: #f00;
+}
+.caller {
+  background: #666;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
 }

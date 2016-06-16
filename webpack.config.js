@@ -32,13 +32,20 @@ module.exports = {
     //各种加载器，即让各种文件格式可用require引用
     loaders: [
       // { test: /\.css$/, loader: "style-loader!css-loader"},
+        // {
+        //     test: /\.less$/,
+        //     loader: extractLESS.extract(
+        //         'css?sourceMap!' +
+        //         'less?sourceMap!'+
+        //         'autoprefixer?browsers=last 2 versions'
+        //     )
+        // },
         {
             test: /\.less$/,
             loader: extractLESS.extract(
-                //'less?sourceMap!'+
-                //'css?sourceMap!' +
-                'css!less!'+
-                'autoprefixer?browsers=last 2 versions'
+                'css?sourceMap!'+
+                'autoprefixer?browsers=last 5 versions!'+
+                'less?sourceMap'
             )
         },
         {
