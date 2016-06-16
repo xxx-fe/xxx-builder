@@ -1,2 +1,0 @@
-webpackJsonp([3,6],[function(n,o,e){n.exports=e(5)},,,,,function(n,o,e){"use strict";e(!function(){var n=new Error('Cannot find module "../../less/index.less"');throw n.code="MODULE_NOT_FOUND",n}()),e(6)},function(n,o,e){n.exports=e.p+"img/404.8801de.png"}]);
-//# sourceMappingURL=index.de8fb3.js.map

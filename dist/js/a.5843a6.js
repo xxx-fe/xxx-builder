@@ -1,2 +1,0 @@
-webpackJsonp([0,6],[function(n,o,t){n.exports=t(1)},function(n,o,t){"use strict";t(!function(){var n=new Error('Cannot find module "../../less/index.less"');throw n.code="MODULE_NOT_FOUND",n}()),t(3);for(var e=(new Function,1);10>e;e++);},,function(n,o){"use strict"}]);
-//# sourceMappingURL=a.5843a6.js.map

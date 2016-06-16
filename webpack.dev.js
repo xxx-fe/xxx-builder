@@ -7,6 +7,7 @@
 const path = require('path');
 const fs   = require('fs');
 const config = require('./config.json');
+const autoprefixer = require('autoprefixer');
 const srcPath = config.path.src;
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -74,6 +75,13 @@ module.exports = (file)=>{
                 loader: 'html-loader'
             }
         ]
+    };
+
+    opt.postcss = function () {
+        return [
+            require('postcss-import')(),
+            autoprefixer({ browsers: ['last 5 versions'] })
+        ];
     };
 
     opt.plugins = [extractLESS];
