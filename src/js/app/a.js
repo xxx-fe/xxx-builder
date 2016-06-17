@@ -1,4 +1,4 @@
-require('../../less/index.less');
+//require('../../less/index.less');
 require('./b');
 
 var DownLoad = new Function;

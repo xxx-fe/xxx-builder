@@ -9,7 +9,7 @@ const fs   = require('fs');
 
 const config = require('./config.json');
 const distPath = config.path.dist + '/';
-const autoprefixer = require('autoprefixer');
+
 var nameStr = '[name].[hash:6]';
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -32,24 +32,23 @@ module.exports = {
     //各种加载器，即让各种文件格式可用require引用
     loaders: [
       // { test: /\.css$/, loader: "style-loader!css-loader"},
-      // {
-      //     test: /\.less$/,
-      //     loader: extractLESS.extract(
-      //         'css?sourceMap!' +
-      //         'less?sourceMap!'+
-      //         'autoprefixer?browsers=last 5 versions'
-      //     )
-      // },
-      {
-          test: /\.less$/,
-          loader: extractLESS.extract(
-              'css?sourceMap!' +
-              'postcss-loader!'+
-              'less?sourceMap'
-              //'less?sourceMap!'+
-              //'autoprefixer?browsers=last 5 versions'
-          )
-      },
+        // {
+        //     test: /\.less$/,
+        //     loader: extractLESS.extract(
+        //         'css?sourceMap!' +
+        //         'less?sourceMap!'+
+        //         'autoprefixer?browsers=last 2 versions'
+        //     )
+        // },
+        /**/
+        {
+            test: /\.less$/,
+            loader: extractLESS.extract(
+                'css?-autoprefixer&sourceMap!'+  /* 这里要加入　-autoprefixer　这个表示不要移除浏览器前缀（-webkit-）的样式，默认在压缩的时候会去掉前缀相关的样式　　详情查看 https://github.com/webpack/css-loader */
+                'autoprefixer?browsers=last 5 versions!'+
+                'less?sourceMap'
+            )
+        },
         {
             test: /\.(jpg|png|gif)$/,
             loader: "url?limit=8192&name=img/"+ nameStr +".[ext]"+"!img?minimize&progressive=true&optimizationLevel=5"
@@ -71,12 +70,7 @@ module.exports = {
         }
     ]
   },
-  postcss:function () {
-      return [
-          require('postcss-import')(),
-          autoprefixer({ browsers: ['last 5 versions'] })
-      ];
-  },
+
   resolve: {
     //配置别名，在项目中可缩减引用路径
     alias: {},

@@ -40,15 +40,14 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(2);
-	__webpack_require__(10);
+	//require('../../less/index.less');
+	__webpack_require__(1);
 
 	var DownLoad = new Function();
 
@@ -59,15 +58,7 @@
 	var ms = 'ms';
 
 /***/ },
-
-/***/ 2:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 10:
+/* 1 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75,5 +66,4 @@
 	var bcom = 'bcom';
 
 /***/ }
-
-/******/ });
+/******/ ]);

@@ -40,9 +40,8 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52,10 +51,10 @@
 	    @description 首页业务
 	*/
 
-	__webpack_require__(2);
+	//require('../../less/index.less');
 	//import avalon from '../vendor/avalon';
 
-	__webpack_require__(9);
+	__webpack_require__(1);
 
 	var testIndex = 'index1';
 	var a = '45yt';
@@ -65,19 +64,10 @@
 	}
 
 /***/ },
-
-/***/ 2:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 9:
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "img/404.png";
 
 /***/ }
-
-/******/ });
+/******/ ]);

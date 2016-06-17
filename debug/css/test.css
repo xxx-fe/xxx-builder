@@ -21,6 +21,7 @@
 }
 .caller {
   background: #666;
+  color: #fff;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;

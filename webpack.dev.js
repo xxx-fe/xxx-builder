@@ -51,10 +51,8 @@ module.exports = (file)=>{
                 test: /\.less$/,
                 loader: extractLESS.extract(
                     'css?sourceMap!' +
-                    'postcss-loader!'+
+                    'autoprefixer?browsers=last 5 versions!'+
                     'less?sourceMap'
-                    //'less?sourceMap!'+
-                    //'autoprefixer?browsers=last 5 versions'
                 )
             },
             {
@@ -103,6 +101,9 @@ module.exports = (file)=>{
         //     'react':'./react.js'
         // }
     };
+    opt.postcss=function () {
+       return [require('autoprefixer')];
+     }
 
     return opt;
 };
