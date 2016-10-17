@@ -1,10 +1,3 @@
-//require('../../less/index.less');
-require('./b');
+import './b';
 
-var DownLoad = new Function;
-
-for(let i=1;i<10;i++){
-	//
-}
-
-let ms = 'ms';
+var as='bas';
