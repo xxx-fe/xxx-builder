@@ -1,0 +1,16 @@
+{
+  "other": {
+    "fonts/iconfont.eot": "fonts/iconfont.36d197.eot",
+    "fonts/iconfont.woff": "fonts/iconfont.35c9d1.woff",
+    "fonts/iconfont.ttf": "fonts/iconfont.bd7969.ttf",
+    "fonts/iconfont.svg": "fonts/iconfont.76f16b.svg"
+  },
+  "js": {
+    "js/a.js": "js/a.09292f.js",
+    "js/b.js": "js/b.5f9c35.js"
+  },
+  "css": {
+    "css/a.css": "css/a.09292f.css",
+    "css/b.css": "css/b.5f9c35.css"
+  }
+}
