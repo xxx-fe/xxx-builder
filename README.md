@@ -1,9 +1,9 @@
 # xxx-builder
 
 ## 项目介绍
-本项目是利用webpack+react架构的**web app**脚手架的前端项目
+本脚手架是利用webpack+react+gulp架构的前端项目
 
-** 特点：**
+### 特点：
 - 适合多页应用
 - 既可实现前后端分离，也可以生成后端渲染所需要的模板
 - 可以解析JSX语法
@@ -82,7 +82,7 @@ npm run build
 ├─webpack.core.js   //核心文件构建
 └─webpack.dev.js    //开发模式配置
 ```
-## 3. 技术栈
+## 技术栈
 - [x] [Webpack](https://webpack.github.io)
 - [x] [React](https://facebook.github.io/react/)
 - [x] [ES6](http://es6.ruanyifeng.com/)
