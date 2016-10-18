@@ -41,7 +41,7 @@ npm run build
 | npm run core:dev   | 根据`webpack.core.js`,build出一份开发环境的公共资源代码 |
 | npm run core:build   | 根据`webpack.core.js`,build出一份生产环境的公共资源代码 |
 
-## 使用必须在根目录配置`config.json`文件进行指定输出的文件路径
+## 必须在根目录配置`config.json`文件进行指定输出的文件路径
 ```js
 {
     "path":{//目录
