@@ -6,5 +6,5 @@
     },
     "appJsPath":"app",
     "htmlViews": "./debug/html",
-    "mapPath": "./dist/html/map"
+    "mapPath": "./debug/html/map"
 }
