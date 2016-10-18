@@ -7,6 +7,7 @@
 const path = require('path');
 const fs   = require('fs');
 const config = require('./config.json');
+const autoprefixer = require('autoprefixer');
 const srcPath = config.path.src;
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -38,12 +39,20 @@ module.exports = (file)=>{
     opt.module = {
         //各种加载器，即让各种文件格式可用require引用
         loaders: [
+            // {
+            //     test: /\.less$/,
+            //     loader: extractLESS.extract(
+            //         'css?sourceMap!' +
+            //         'less?sourceMap!'+
+            //         'autoprefixer?browsers=last 5 versions'
+            //     )
+            // },
             {
                 test: /\.less$/,
                 loader: extractLESS.extract(
                     'css?sourceMap!' +
-                    'less?sourceMap!'+
-                    'autoprefixer?browsers=last 2 versions'
+                    'autoprefixer?browsers=last 5 versions!'+
+                    'less?sourceMap'
                 )
             },
             {
@@ -55,15 +64,24 @@ module.exports = (file)=>{
                 loader: "file?name=fonts/[name].[ext]"
             },
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 loader: "babel",
-                query:{presets: ['es2015']}
+                query: {
+                  presets: ['react', 'es2015']
+                }
             },
             {
-                test: /\.jsx$/,
-                loader: 'babel-loader!jsx-loader?harmony'
-            },
+                test: /\.html$/,
+                loader: 'html-loader'
+            }
         ]
+    };
+
+    opt.postcss = function () {
+        return [
+            require('postcss-import')(),
+            autoprefixer({ browsers: ['last 5 versions'] })
+        ];
     };
 
     opt.plugins = [extractLESS];
@@ -83,6 +101,9 @@ module.exports = (file)=>{
         //     'react':'./react.js'
         // }
     };
+    opt.postcss=function () {
+       return [require('autoprefixer')];
+     }
 
     return opt;
 };

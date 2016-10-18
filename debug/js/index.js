@@ -51,7 +51,14 @@
 	    @description 首页业务
 	*/
 
+<<<<<<< HEAD
 	__webpack_require__(2);
+=======
+	//require('../../less/index.less');
+	//import avalon from '../vendor/avalon';
+
+	__webpack_require__(1);
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 
 	var testIndex = 'index1';
 	var a = '45yt';
@@ -61,11 +68,18 @@
 	}
 
 /***/ },
+<<<<<<< HEAD
 /* 1 */,
 /* 2 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+=======
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "img/404.png";
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 
 /***/ }
 /******/ ]);

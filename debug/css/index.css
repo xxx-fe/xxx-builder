@@ -27,7 +27,12 @@ html {
   text-size-adjust: 100%;
   -webkit-user-select: none;
   -ms-user-select: none;
+<<<<<<< HEAD
   user-select: none;
+=======
+  -moz-user-select: none;
+       user-select: none;
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 }
 html,
 body {
@@ -209,3 +214,9 @@ input::-webkit-inner-spin-button {
 .err-404 {
   background: url(img/404.png) no-repeat center center;
 }
+<<<<<<< HEAD
+=======
+.test {
+  background: red;
+}
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1

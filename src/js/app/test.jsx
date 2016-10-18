@@ -4,6 +4,7 @@
 */
 
 require('../../less/test.less');
+var tpl = require('../../tpl/test.html');
 
 ReactDOM.render(
     <CommentBox />,
@@ -17,7 +18,7 @@ var CommentBox1 = React.createClass({
       return (
         <div className="commentBox">
           {this.props.name}
-          <CommentBox><h1>brsyqd</h1></CommentBox>
+          <CommentBox><h1>123test</h1></CommentBox>
         </div>
       );
     }

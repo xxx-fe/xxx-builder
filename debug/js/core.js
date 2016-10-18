@@ -42,13 +42,18 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+<<<<<<< HEAD
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+=======
+/***/ function(module, exports) {
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 
 	/*
 	    @description: 核心文件
 	*/
+<<<<<<< HEAD
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(2);
 
@@ -5700,6 +5705,17 @@
 	})(function (React) {
 	  return React.__SECRET_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 	});
+=======
+	//var React = require('../vendor/react');
+	//var ReactDOM =  require('../vendor/react-dom');
+
+	// import React    from '../vendor/react';
+	// import ReactDOM from '../vendor/react-dom';
+	//
+	// window.React = React;
+	// window.ReactDOM = ReactDOM;
+	"use strict";
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 
 /***/ }
 /******/ ]);

@@ -44,16 +44,26 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
+=======
+	'use strict';
+
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 	/*
 	    @filename: test.js
 	    @description test
 	*/
 
 	__webpack_require__(2);
+<<<<<<< HEAD
+=======
+	var tpl = __webpack_require__(6);
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 
 	ReactDOM.render(React.createElement(CommentBox, null), document.getElementById('content'));
 
 	//嵌套
+<<<<<<< HEAD
 	var CommentBox1 = React.createClass({ displayName: "CommentBox1",
 	  render: function () {
 	    return React.createElement("div", { className: "commentBox" }, this.props.name, React.createElement(CommentBox, null, React.createElement("h1", null, "brsyqd")));
@@ -74,6 +84,45 @@
 	    this.setState({ text: e.target.value });
 	  },
 	  handleSubmit: function (e) {
+=======
+	var CommentBox1 = React.createClass({
+	  displayName: 'CommentBox1',
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'commentBox' },
+	      this.props.name,
+	      React.createElement(
+	        CommentBox,
+	        null,
+	        React.createElement(
+	          'h1',
+	          null,
+	          '123test'
+	        )
+	      )
+	    );
+	  }
+	});
+	ReactDOM.render(React.createElement(CommentBox1, { name: 'yy' }), document.getElementById('content1'));
+
+	//方法
+	var CommentForm = React.createClass({
+	  displayName: 'CommentForm',
+
+	  //设置默认数据  state数据
+	  getInitialState: function getInitialState() {
+	    return { author: '', text: '' };
+	  },
+	  handleAuthorChange: function handleAuthorChange(e) {
+	    this.setState({ author: e.target.value });
+	  },
+	  handleTextChange: function handleTextChange(e) {
+	    this.setState({ text: e.target.value });
+	  },
+	  handleSubmit: function handleSubmit(e) {
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 	    e.preventDefault();
 	    var author = this.state.author.trim();
 	    var text = this.state.text.trim();
@@ -83,6 +132,7 @@
 	    // TODO: send request to the server
 	    this.setState({ author: '', text: '' });
 	  },
+<<<<<<< HEAD
 	  render: function () {
 	    return React.createElement("form", { className: "commentForm", onSubmit: this.handleSubmit }, React.createElement("input", {
 	      type: "text",
@@ -93,6 +143,27 @@
 	      placeholder: "Say something...",
 	      value: this.state.text,
 	      onChange: this.handleTextChange }), this.state.text, React.createElement("input", { type: "submit", value: "Post" }));
+=======
+	  render: function render() {
+	    return React.createElement(
+	      'form',
+	      { className: 'commentForm', onSubmit: this.handleSubmit },
+	      React.createElement('input', {
+	        type: 'text',
+	        placeholder: 'Your name',
+	        value: this.state.author,
+	        onChange: this.handleAuthorChange
+	      }),
+	      React.createElement('input', {
+	        type: 'text',
+	        placeholder: 'Say something...',
+	        value: this.state.text,
+	        onChange: this.handleTextChange
+	      }),
+	      this.state.text,
+	      React.createElement('input', { type: 'submit', value: 'Post' })
+	    );
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 	  }
 	});
 
@@ -105,5 +176,17 @@
 
 	// removed by extract-text-webpack-plugin
 
+<<<<<<< HEAD
+=======
+/***/ },
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */
+/***/ function(module, exports) {
+
+	module.exports = "<a> test </a>\n";
+
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 /***/ }
 /******/ ]);

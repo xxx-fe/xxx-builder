@@ -40,15 +40,25 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
+<<<<<<< HEAD
 /******/ ({
 
 /***/ 0:
+=======
+/******/ ([
+/* 0 */
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+<<<<<<< HEAD
 	__webpack_require__(2);
 	__webpack_require__(10);
+=======
+	//require('../../less/index.less');
+	__webpack_require__(1);
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 
 	var DownLoad = new Function();
 
@@ -56,6 +66,7 @@
 		//
 	}
 
+<<<<<<< HEAD
 /***/ },
 
 /***/ 2:
@@ -66,6 +77,12 @@
 /***/ },
 
 /***/ 10:
+=======
+	var ms = 'ms';
+
+/***/ },
+/* 1 */
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1
 /***/ function(module, exports) {
 
 	'use strict';
@@ -73,5 +90,9 @@
 	var bcom = 'bcom';
 
 /***/ }
+<<<<<<< HEAD
 
 /******/ });
+=======
+/******/ ]);
+>>>>>>> 8f377b3ccf5b2d12ade5aa7bd193b903c1eea3e1

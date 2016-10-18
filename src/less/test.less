@@ -3,17 +3,29 @@
 @description: test
 @author: yy
 */
-@import "_common/reset";
 
+@import "./var";
 
+/*
 .loading{
     background: url(../img/loading.gif) no-repeat center center;
 }
-
+*/
 .err-404{
     background: url(../img/404.png) no-repeat center center;
 }
 
 .af{
+    font-size: ceil(13.3);
     color: #f00;
+}
+
+.mixin() {
+    color: #fff;
+}
+
+.caller {
+  .te();
+  .mixin();
+  display: flex;
 }
